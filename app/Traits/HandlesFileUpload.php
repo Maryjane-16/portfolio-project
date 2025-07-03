@@ -11,10 +11,10 @@ trait HandlesFileUpload
                 $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
                 $maxSize = 10 * 1024 * 1024; //10MB
 
-                $fileType = $_FILES[$fieldName]['type'];
                 $fileSize = $_FILES[$fieldName]['size'];
                 $fileName = $_FILES[$fieldName]['name'];
                 $tmpName = $_FILES[$fieldName]['tmp_name'];
+                $fileType = mime_content_type($tmpName);
 
                 if (!in_array($fileType, $allowedTypes)) {
                     $_SESSION['error'] = "Invalid file type. Only JPG, JPEG, and PNG files are allowed.";
@@ -37,7 +37,7 @@ trait HandlesFileUpload
                 $targetFile = $uploadDir . $photoName;
 
                 if (move_uploaded_file($tmpName, $targetFile)) {
-                    return ['path' => "/$uploadSubDir/" . $photoName];
+                    return ['path' => "$uploadSubDir" . $photoName];
                 }else{
                     return $_SESSION['error'] = "Failed to upload photo.";
                 }

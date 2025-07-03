@@ -2,6 +2,7 @@
 
 use FastRoute\RouteCollector;
 use App\Controllers\HomeController;
+use App\Controllers\IntroController;
 use App\Controllers\LoginController;
 use App\Controllers\LogoutController;
 use App\Controllers\RegisterController;
@@ -23,10 +24,13 @@ return function (RouteCollector $r) {
     // Testimonial routes
     $r->addRoute('GET', '/testimonials', [TestimonialController::class, 'index']);
     $r->addRoute('GET', '/testimonials/create', [TestimonialController::class, 'create']);
-    $r->addRoute('GET', '/testimonials/1/show', [TestimonialController::class, 'show']);
+    $r->addRoute('GET', '/testimonials/{id}/show', [TestimonialController::class, 'show']);
     $r->addRoute('POST', '/testimonials/store', [TestimonialController::class, 'store']);
-    $r->addRoute('GET', '/testimonials/1/edit', [TestimonialController::class, 'edit']);
-    $r->addRoute('POST', '/testimonials/update', [TestimonialController::class, 'update']);
-    $r->addRoute('POST', '/testimonials/delete', [TestimonialController::class, 'delete']);
+    $r->addRoute('GET', '/testimonials/{id}/edit', [TestimonialController::class, 'edit']);
+    $r->addRoute('POST', '/testimonials/update/{id}', [TestimonialController::class, 'update']);
+    $r->addRoute('POST', '/testimonials/delete/{id}', [TestimonialController::class, 'destroy']);
     
+    // Intro route
+     $r->addRoute('GET', '/intro/{id}/edit', [IntroController::class, 'edit']);
+    $r->addRoute('POST', '/intro/update/{id}', [IntroController::class, 'update']);
 };  

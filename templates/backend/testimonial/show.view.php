@@ -21,12 +21,12 @@
         <h2 class="details-heading">Testimonial Details</h2>
          <div class="details-card">
         <div class="details-image">
-      <img src="uploads/jane.jpg" alt="Jane Doe" />
+      <img src="http://localhost/portfolio-project/storage/<?= htmlspecialchars($testimonial["photo"]); ?>" alt="Jane Doe" />
         </div>
         <div class="details-content">
-      <p><strong>Name:</strong> Jane Doe</p>
-      <p><strong>Position:</strong> CEO</p>
-      <p><strong>Review:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget.</p>
+      <p><strong>Name:</strong> <?= htmlspecialchars($testimonial['name']); ?></p>
+      <p><strong>Position:</strong> <?= htmlspecialchars($testimonial['position']); ?></p>
+      <p><strong>Review:</strong> <?= htmlspecialchars($testimonial['review']); ?></p>
       <a href="/testimonials" class="btn back-button">← Back to List</a>
          </div>
          </div>

@@ -19,24 +19,26 @@
 
       <div id="create" class="card">
       <h2>Add Testimonial</h2>
-      <form action="#" method="POST" enctype="multipart/form-data">
+      <form method="POST" action="/testimonials/update/<?= htmlspecialchars($testimonial['id']) ?>" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required/>
+          <input type="text" id="name" name="name" value="<?= htmlspecialchars($testimonial['name']); ?>" required/>
         </div>
         <div class="form-group">
           <label for="position">Position:</label>
-          <input type="text" id="position" name="position" required></textarea>
+          <input type="text" id="position" name="position" value="<?= htmlspecialchars($testimonial['position']); ?>"required></textarea>
         </div>
         <div class="form-group">
-          <label for="message">Review:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
+          <label for="review">Review:</label>
+          <textarea id="review" name="review" rows="4" required><?= htmlspecialchars($testimonial['review']); ?></textarea>
         </div>
         <div class="form-group">
-          <label for="image">Upload Image:</label>
-          <input type="file" id="image" name="image" accept="image/*" />
+          <label for="photo">Current Photo:</label>
+          <input type="file" id="photo" name="photo" accept="image/*" />
+          <img src="http://localhost/portfolio-project/storage/<?= htmlspecialchars($testimonial["photo"]); ?>" alt="Jane Doe" />
         </div>
-        <button type="submit" class="form-submit">Submit</button>
+        </div>
+        <button type="submit" class="form-submit">Update</button>
       </form>
       <br>
 

@@ -6,6 +6,7 @@ use Dotenv\Dotenv;
 use App\Requests\Request;
 use FastRoute\Dispatcher;
 use App\Models\DatabaseConnection;
+use App\Controllers\IntroController;
 use App\Controllers\LoginController;
 use App\Controllers\RegisterController;
 use App\Controllers\TestimonialController;
@@ -36,13 +37,13 @@ switch ($routeInfo[0]){
 
         // Inject PDO only if required
         if ($controllerClass === RegisterController::class || $controllerClass === LoginController::class || 
-        $controllerClass === TestimonialController::class){
+        $controllerClass === TestimonialController::class || $controllerClass === IntroController::class){
             $controller = new $controllerClass($pdo);
         } else {
             $controller = new $controllerClass();
         }
         
         $request = new Request();
-        $controller->$controllerMethod($request);
+        $controller->$controllerMethod($request, $vars);
         break;
 }
