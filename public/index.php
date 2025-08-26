@@ -6,8 +6,10 @@ use Dotenv\Dotenv;
 use App\Requests\Request;
 use FastRoute\Dispatcher;
 use App\Models\DatabaseConnection;
+use App\Controllers\HomeController;
 use App\Controllers\IntroController;
 use App\Controllers\LoginController;
+use App\Controllers\ContactController;
 use App\Controllers\RegisterController;
 use App\Controllers\TestimonialController;
 
@@ -16,6 +18,8 @@ session_start();
 // load environment variables
 $dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->safeLoad();
+
+require_once 'helpers.php';
 
 // Prepare our DB connection
 $dbConn = new DatabaseConnection;
@@ -37,7 +41,8 @@ switch ($routeInfo[0]){
 
         // Inject PDO only if required
         if ($controllerClass === RegisterController::class || $controllerClass === LoginController::class || 
-        $controllerClass === TestimonialController::class || $controllerClass === IntroController::class){
+        $controllerClass === TestimonialController::class || $controllerClass === IntroController::class
+        || $controllerClass === ContactController::class || $controllerClass === HomeController::class){
             $controller = new $controllerClass($pdo);
         } else {
             $controller = new $controllerClass();

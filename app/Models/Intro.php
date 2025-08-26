@@ -11,7 +11,8 @@ class Intro
     public function __construct(PDO $db)
     {
         $this->db = $db;
-    }    public function find($id)
+    }   
+    public function find($id)
     {
         $stmt = $this->db->prepare('SELECT * FROM intros WHERE id = :id');
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);

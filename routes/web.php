@@ -5,9 +5,11 @@ use App\Controllers\HomeController;
 use App\Controllers\IntroController;
 use App\Controllers\LoginController;
 use App\Controllers\LogoutController;
+use App\Controllers\ContactController;
 use App\Controllers\RegisterController;
 use App\Controllers\DashboardController;
 use App\Controllers\TestimonialController;
+use App\Controllers\Frontend\IntroController as FrontendIntroController;
 
 return function (RouteCollector $r) {
 
@@ -32,5 +34,11 @@ return function (RouteCollector $r) {
     
     // Intro route
      $r->addRoute('GET', '/intro/{id}/edit', [IntroController::class, 'edit']);
-    $r->addRoute('POST', '/intro/update/{id}', [IntroController::class, 'update']);
-};  
+     $r->addRoute('POST', '/intro/update/{id}', [IntroController::class, 'update']);
+
+    // contact route
+     $r->addRoute('POST', '/', [ContactController::class, 'store']);
+     $r->addRoute('GET', '/contacts', [ContactController::class, 'index']);
+     $r->addRoute('POST', '/contacts/delete/{id}', [ContactController::class, 'destroy']);
+    
+    };  

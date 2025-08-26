@@ -4,7 +4,7 @@
       <a href="/dashboard" class="active">Dashboard</a>
       <a href="/testimonials">Testimonials</a>
       <a href="/intro/1/edit">Edit Intro</a>
-      <a href="#">Settings</a>
+      <a href="/contacts">Contacts</a>
       <br></br>
       <div class="logout">
         <a href="/logout">Logout</a>

@@ -37,7 +37,6 @@
           <tr>
             <th>Name</th>
             <th>Position</th>
-            <th>Review</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -47,7 +46,6 @@
               <tr>
                 <td><?= htmlspecialchars($testimonial['name']) ?></td>
                 <td><?= htmlspecialchars($testimonial['position']) ?></td>
-                <td><?= htmlspecialchars($testimonial['review']) ?></td>
                 <td>
                   <a href="/testimonials/<?= htmlspecialchars($testimonial['id']) ?>/show" class="btn show">Show</a>
                   <a href="/testimonials/<?= htmlspecialchars($testimonial['id']) ?>/edit" class="btn edit">Edit</a>

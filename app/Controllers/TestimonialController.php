@@ -22,7 +22,8 @@ class TestimonialController
     {
         Auth::requireLogin();
         $testimonials = $this->model->all();
-        require_once dirname(__DIR__, 2) . '/templates/backend/testimonial/index.view.php';
+
+        render('backend/testimonial/index.view.php', ['testimonials' => $testimonials]);
     }
     public function create()
     {
@@ -66,11 +67,7 @@ class TestimonialController
         $id = $vars['id'];
         $testimonial = $this->model->find($id);
 
-        if (!$testimonial) {
-            die("Testimonial not found.");
-        }
-
-        require_once dirname(__DIR__, 2) . '/templates/backend/testimonial/show.view.php';
+        render('backend/testimonial/show.view.php', ['testimonial' => $testimonial]);
     }
     public function edit(Request $request, array $vars)
     {
@@ -79,11 +76,7 @@ class TestimonialController
         $id = $vars['id'];
         $testimonial = $this->model->find($id);
 
-        if (!$testimonial) {
-            die("Testimonial not found.");
-        }
-        
-        require_once dirname(__DIR__, 2) . '/templates/backend/testimonial/edit.view.php';
+         render('backend/testimonial/edit.view.php', ['testimonial' => $testimonial]);
     }
 
     public function update(Request $request, array $vars) 
@@ -130,7 +123,7 @@ class TestimonialController
         
         $id = $vars['id'];
         $this->model->delete($id);
-        $_SESSION['error'] = "Testimonial data is deleted successfully.";
+        $_SESSION['success'] = "Testimonial data is deleted successfully.";
         header('Location: /testimonials');
         exit();
 

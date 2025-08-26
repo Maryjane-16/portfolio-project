@@ -21,7 +21,7 @@
         <h2 class="details-heading">Testimonial Details</h2>
          <div class="details-card">
         <div class="details-image">
-      <img src="http://localhost/portfolio-project/storage/<?= htmlspecialchars($testimonial["photo"]); ?>" alt="Jane Doe" />
+      <img src="http://localhost/portfolio-project/storage/<?= htmlspecialchars($testimonial["photo"]); ?>" alt="" />
         </div>
         <div class="details-content">
       <p><strong>Name:</strong> <?= htmlspecialchars($testimonial['name']); ?></p>

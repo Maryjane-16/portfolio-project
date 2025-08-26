@@ -23,7 +23,8 @@ class IntroController
         $id = $vars['id'];
         $intro = $this->model->find($id);
         
-        require_once dirname(__DIR__, 2) . '/templates/backend/intro/edit.view.php';
+        render('backend/intro/edit.view.php', ['intro' => $intro]);
+        
     }
 
     public function update(Request $request, array $vars) 
