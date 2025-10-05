@@ -20,48 +20,48 @@
       <h1>Create Testimonial</h1>
     </header>
 
-      
-      <div id="create" class="card">
-        <h2>Add Testimonial</h2>
-        <form method="POST" action="/testimonials/store" enctype="multipart/form-data">
 
-          <?php if (isset($_SESSION['error'])): ?>
-            <div class="alert alert-danger"><?= $_SESSION['error'] ?> </div>
-            <?php unset($_SESSION['error']); ?>
-          <?php endif; ?>
+    <div id="create" class="card">
+      <h2>Add Testimonial</h2>
+      <form method="POST" action="/testimonials/store" enctype="multipart/form-data">
 
-          <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success"><?= $_SESSION['success'] ?> </div>
-            <?php unset($_SESSION['success']); ?>
-          <?php endif; ?>
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="alert alert-danger"><?= $_SESSION['error'] ?> </div>
+          <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
 
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+        <?php if (isset($_SESSION['success'])): ?>
+          <div class="alert alert-success"><?= $_SESSION['success'] ?> </div>
+          <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
 
-          <div class="form-group">
-            <label for="Position">Position:</label>
-            <input type="text" id="position" name="position" required />
-          </div>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
 
-          <div class="form-group">
-            <label for="review">Review:</label>
-            <textarea id="review" name="review" rows="4" required></textarea>
-          </div>
+        <div class="form-group">
+          <label for="Position">Position:</label>
+          <input type="text" id="position" name="position" required />
+        </div>
 
-          <div class="form-group">
-            <label for="photo">Photo:</label>
-            <input type="file" id="photo" name="photo" accept="image/*" />
-          </div>
+        <div class="form-group">
+          <label for="review">Review:</label>
+          <textarea id="review" name="review" rows="4" required></textarea>
+        </div>
 
-          <button type="submit" class="form-submit">Submit</button>
-        </form>
+        <div class="form-group">
+          <label for="photo">Photo:</label>
+          <input type="file" id="photo" name="photo" accept="image/*" />
+        </div>
 
-        <br>
+        <button type="submit" class="form-submit">Submit</button>
+      </form>
 
-        <a href="/testimonials" class="btn back-button">← Back to List</a>
-      </div>
+      <br>
+
+      <a href="/testimonials" class="btn back-button">← Back to List</a>
+    </div>
   </main>
 </body>
 

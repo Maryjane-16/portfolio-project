@@ -18,16 +18,15 @@ class IntroController
     }
     public function edit(Request $request, array $vars)
     {
-        Auth::requireLogin(); 
-        
+        Auth::requireLogin();
+
         $id = $vars['id'];
         $intro = $this->model->find($id);
-        
+
         render('backend/intro/edit.view.php', ['intro' => $intro]);
-        
     }
 
-    public function update(Request $request, array $vars) 
+    public function update(Request $request, array $vars)
     {
         if ($request->method() === 'POST') {
 
@@ -41,18 +40,15 @@ class IntroController
                 exit();
             }
 
-            $this->model->update($id,$title, $description);
+            $this->model->update($id, $title, $description);
 
             $_SESSION['error'] = "Intro data has been updated successfully.";
             header("Location: /intro/{$id}/edit");
             exit();
-        }else{
+        } else {
             $_SESSION['error'] = "Invalid request method.";
             header('Location: /intro/{$id}/edit');
             exit();
-
         }
     }
-    
-   
 }

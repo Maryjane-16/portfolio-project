@@ -43,7 +43,7 @@ class TestimonialController
                 header("Location: /testimonials/create");
                 exit();
             }
-            
+
             $uploadResult = $this->handlePhotoUpload('photo', '/testimonial/');
             $photoPath = $uploadResult['path'];
 
@@ -52,11 +52,10 @@ class TestimonialController
             $_SESSION['error'] = "Testimonial has been created successfully.";
             header('Location: /testimonials');
             exit();
-        }else{
+        } else {
             $_SESSION['error'] = "Invalid request method.";
             header("Location: /testimonials/create");
             exit();
-
         }
     }
 
@@ -71,15 +70,15 @@ class TestimonialController
     }
     public function edit(Request $request, array $vars)
     {
-        Auth::requireLogin(); 
-        
+        Auth::requireLogin();
+
         $id = $vars['id'];
         $testimonial = $this->model->find($id);
 
-         render('backend/testimonial/edit.view.php', ['testimonial' => $testimonial]);
+        render('backend/testimonial/edit.view.php', ['testimonial' => $testimonial]);
     }
 
-    public function update(Request $request, array $vars) 
+    public function update(Request $request, array $vars)
     {
         if ($request->method() === 'POST') {
 
@@ -101,31 +100,29 @@ class TestimonialController
             // Only overwrit if a new file was uploaded
             $uploadResult = $this->handlePhotoUpload('photo', '/testimonial/');
             if (!empty($uploadResult['path'])) {
-            $photoPath = $uploadResult['path']; // Only replace if a new file was uploaded
+                $photoPath = $uploadResult['path']; // Only replace if a new file was uploaded
             }
 
-            $this->model->update($id,$name, $position, $photoPath, $review);
+            $this->model->update($id, $name, $position, $photoPath, $review);
 
             $_SESSION['error'] = "Testimonial data has been updated successfully.";
             header('Location: /testimonials');
             exit();
-        }else{
+        } else {
             $_SESSION['error'] = "Invalid request method.";
             header("Location: /testimonials/{id}/edit");
             exit();
-
         }
     }
-    
+
     public function destroy(Request $request, array $vars)
     {
-        Auth::requireLogin(); 
-        
+        Auth::requireLogin();
+
         $id = $vars['id'];
         $this->model->delete($id);
         $_SESSION['success'] = "Testimonial data is deleted successfully.";
         header('Location: /testimonials');
         exit();
-
     }
 }

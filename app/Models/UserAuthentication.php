@@ -28,14 +28,13 @@ class UserAuthentication extends DatabaseConnection
             $stmt->bindValue(':password', $password, PDO::PARAM_STR);
 
             return $stmt->execute();
-
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             exit;
         }
     }
 
-    Public function login($email, $password)
+    public function login($email, $password)
     {
         $sql = "SELECT * FROM users WHERE email = :email";
 
@@ -46,17 +45,13 @@ class UserAuthentication extends DatabaseConnection
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($user && password_verify($password, $user['password'])){
+            if ($user && password_verify($password, $user['password'])) {
                 return $user;
             }
-            return false;        
-        
-        } catch(PDOException $e) {
+            return false;
+        } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
             exit;
         }
-    
     }
-
-    
 }

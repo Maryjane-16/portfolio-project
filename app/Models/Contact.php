@@ -30,7 +30,7 @@ class Contact
         return $stmt->execute();
     }
 
-   
+
 
     public function delete($id)
 

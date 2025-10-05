@@ -29,15 +29,15 @@
           <h4 class="display-3--title mb-5">start your project</h4>
 
           <?php if (isset($_SESSION['error'])): ?>
-                <div class="alert alert-danger"><?= $_SESSION['error'] ?> </div>
-                <?php unset($_SESSION['error']); ?>
-            <?php endif; ?>
+            <div class="alert alert-danger"><?= $_SESSION['error'] ?> </div>
+            <?php unset($_SESSION['error']); ?>
+          <?php endif; ?>
 
-            <?php if (isset($_SESSION['success'])): ?>
-                <div class="alert alert-success"><?= $_SESSION['success'] ?> </div>
-                <?php unset($_SESSION['success']); ?>
-            <?php endif; ?>
-            
+          <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success"><?= $_SESSION['success'] ?> </div>
+            <?php unset($_SESSION['success']); ?>
+          <?php endif; ?>
+
           <form method="POST" action="/" class="row">
             <div class="col-lg-6 col-md mb-3">
               <input type="text" placeholder="Name" name="name" id="inputName" class="shadow form-control form-control-lg">

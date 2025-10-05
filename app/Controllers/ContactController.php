@@ -17,7 +17,7 @@ class ContactController
         $this->model = new Contact($db);
     }
 
-     public function index()
+    public function index()
     {
         Auth::requireLogin();
         $contacts = $this->model->all();
@@ -38,29 +38,27 @@ class ContactController
                 $_SESSION['error'] = "The phone, email and message fields are required.";
                 header('Location: /');
                 exit();
-           }
-            
+            }
+
             $this->model->store($Name, $Phone, $email, $message);
 
             $_SESSION['success'] = "Your message has been sent successfully.";
             header('Location: /');
             exit();
-        }else{
+        } else {
             $_SESSION['error'] = "Invalid request method.";
             header('Location: /');
             exit();
-
         }
     }
-        public function destroy(Request $request, array $vars)
+    public function destroy(Request $request, array $vars)
     {
-        Auth::requireLogin(); 
-        
+        Auth::requireLogin();
+
         $id = $vars['id'];
         $this->model->delete($id);
         $_SESSION['success'] = "Message data has been deleted successfully.";
         header('Location: /contacts');
         exit();
-
     }
 }

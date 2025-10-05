@@ -22,20 +22,20 @@ class RegisterController
 
     public function register(Request $request)
     {
-        if ($request->method() === 'POST'){
+        if ($request->method() === 'POST') {
 
-            $username = $request->input('username'); 
+            $username = $request->input('username');
             $email = $request->input('email');
             $password = $request->input('password');
             $confirmPassword = $request->input('confirm_password');
 
-            if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)){
+            if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
                 $_SESSION['error'] = "All fields are required.";
                 header('Location: /register');
                 exit();
             }
 
-            if ($password !== $confirmPassword){
+            if ($password !== $confirmPassword) {
                 $_SESSION['error'] = "Passwords does not match.";
                 header('Location: /register');
                 exit();
@@ -45,14 +45,13 @@ class RegisterController
 
             $result = $this->userAuth->register($username, $email, $password);
 
-            if ($result){
+            if ($result) {
                 $_SESSION['success'] = "Registration Successful.";
                 header('Location: /login');
                 exit();
-            }else{
+            } else {
                 $_SESSION['error'] = "Registration failed: " . $result;
             }
-
         } else {
             $_SESSION['error'] = "Invalid request method.";
         }

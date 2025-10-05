@@ -11,7 +11,7 @@ class Intro
     public function __construct(PDO $db)
     {
         $this->db = $db;
-    }   
+    }
     public function find($id)
     {
         $stmt = $this->db->prepare('SELECT * FROM intros WHERE id = :id');
@@ -30,5 +30,4 @@ class Intro
         $stmt->bindValue(':description', $description, PDO::PARAM_STR);
         return $stmt->execute();
     }
-
 }
